@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="h2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c6b43"/><stop offset="1" stop-color="#0f3d27"/>
+    </linearGradient>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#5b6b7d"/>
+    </marker>
+    <style>
+      .box{fill:#fff;stroke:#9bb2cf;stroke-width:1.3;rx:8;}
+      .t{fill:#233a55;font-size:13px;font-weight:600;}
+      .s{fill:#5b6b7d;font-size:11px;}
+      .lbl{fill:#1b3a6b;font-size:13px;font-weight:700;}
+      .fl{stroke:#5b6b7d;stroke-width:1.8;fill:none;marker-end:url(#a2);}
+      .rbac{fill:#eaf1fb;stroke:#3b6fb5;}
+      .ols{fill:#fff4e6;stroke:#d98a26;}
+      .rls{fill:#eafaf1;stroke:#37a06a;}
+    </style>
+  </defs>
+  <rect width="980" height="560" fill="#ffffff"/>
+  <rect width="980" height="48" fill="url(#h2)"/>
+  <text x="26" y="31" fill="#fff" font-size="19" font-weight="700">Layered Access Control &#8212; RBAC &#8594; OLS &#8594; RLS</text>
+
+  <!-- user -->
+  <rect class="box" x="40" y="230" width="150" height="70"/>
+  <text class="t" x="60" y="262">User</text>
+  <text class="s" x="60" y="282">via Entra ID group</text>
+
+  <!-- RBAC gate -->
+  <rect class="box rbac" x="250" y="210" width="180" height="110"/>
+  <text class="lbl" x="270" y="238" fill="#3b6fb5">1 &#183; RBAC</text>
+  <text class="s" x="270" y="262">Can you OPEN it?</text>
+  <text class="s" x="270" y="282">Workspace / App /</text>
+  <text class="s" x="270" y="300">Report access</text>
+
+  <!-- OLS gate -->
+  <rect class="box ols" x="470" y="210" width="180" height="110"/>
+  <text class="lbl" x="490" y="238" fill="#d98a26">2 &#183; OLS</text>
+  <text class="s" x="490" y="262">Which OBJECTS</text>
+  <text class="s" x="490" y="282">render? Tables /</text>
+  <text class="s" x="490" y="300">columns (PHI, salary)</text>
+
+  <!-- RLS gate -->
+  <rect class="box rls" x="690" y="210" width="180" height="110"/>
+  <text class="lbl" x="710" y="238" fill="#37a06a">3 &#183; RLS</text>
+  <text class="s" x="710" y="262">Which ROWS?</text>
+  <text class="s" x="710" y="282">DAX filter on dims</text>
+  <text class="s" x="710" y="300">(region, facility...)</text>
+
+  <!-- data -->
+  <rect class="box" x="690" y="380" width="180" height="64"/>
+  <text class="t" x="710" y="410">Certified Model</text>
+  <text class="s" x="710" y="430">filtered result set</text>
+
+  <path class="fl" d="M190,265 L250,265"/>
+  <path class="fl" d="M430,265 L470,265"/>
+  <path class="fl" d="M650,265 L690,265"/>
+  <path class="fl" d="M780,320 L780,380"/>
+
+  <!-- enforcement note -->
+  <rect x="40" y="380" width="600" height="120" rx="8" fill="#f4f7fb" stroke="#cdd8e6"/>
+  <text class="lbl" x="58" y="406">Enforced once, in the model</text>
+  <text class="s" x="58" y="430">&#8226; RBAC granted to Entra ID security groups, never individuals</text>
+  <text class="s" x="58" y="450">&#8226; RLS &amp; OLS defined in the semantic model &#8212; not in report filters/bookmarks</text>
+  <text class="s" x="58" y="470">&#8226; Dynamic RLS via USERPRINCIPALNAME() + bridge table scales to thousands of users</text>
+  <text class="s" x="58" y="490">&#8226; Every role validated with &#8220;View as role&#8221; before certification</text>
+
+  <text x="26" y="535" fill="#7a8aa0" font-size="11">Illustrative security design pattern.</text>
+</svg>

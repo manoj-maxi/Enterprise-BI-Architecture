@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 760" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="hdr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b3a6b"/>
+      <stop offset="1" stop-color="#10243f"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#5b6b7d"/>
+    </marker>
+    <style>
+      .lane   { fill:#f4f7fb; stroke:#cdd8e6; stroke-width:1.2; rx:10; }
+      .lanelbl{ fill:#1b3a6b; font-size:13px; font-weight:700; letter-spacing:.4px; }
+      .node   { fill:#ffffff; stroke:#9bb2cf; stroke-width:1.3; rx:7; }
+      .nodet  { fill:#233a55; font-size:12px; font-weight:600; }
+      .gold   { fill:#fff6e0; stroke:#e0a93c; }
+      .silver { fill:#eef2f6; stroke:#9aa6b2; }
+      .bronze { fill:#f6ead9; stroke:#c08a4a; }
+      .gov    { fill:#eafaf1; stroke:#37a06a; }
+      .govt   { fill:#1c6b43; font-size:12px; font-weight:600; }
+      .flow   { stroke:#5b6b7d; stroke-width:1.6; fill:none; marker-end:url(#arr); }
+      .govflow{ stroke:#37a06a; stroke-width:1.3; fill:none; stroke-dasharray:5 4; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1180" height="760" fill="#ffffff"/>
+  <rect x="0" y="0" width="1180" height="50" fill="url(#hdr)"/>
+  <text x="28" y="32" fill="#ffffff" font-size="20" font-weight="700">Enterprise BI Reference Architecture &#8212; Microsoft Fabric / Power BI / Snowflake</text>
+
+  <!-- SOURCE -->
+  <rect class="lane" x="24" y="74" width="190" height="610"/>
+  <text class="lanelbl" x="40" y="98">SOURCE SYSTEMS</text>
+  <g>
+    <rect class="node" x="42" y="116" width="154" height="40"/><text class="nodet" x="56" y="141">Snowflake</text>
+    <rect class="node" x="42" y="166" width="154" height="40"/><text class="nodet" x="56" y="191">SQL Server / Oracle</text>
+    <rect class="node" x="42" y="216" width="154" height="40"/><text class="nodet" x="56" y="241">SAP / Dynamics / SFDC</text>
+    <rect class="node" x="42" y="266" width="154" height="40"/><text class="nodet" x="56" y="291">REST / OData APIs</text>
+    <rect class="node" x="42" y="316" width="154" height="40"/><text class="nodet" x="56" y="341">Files / ACORD XML</text>
+  </g>
+
+  <!-- INGESTION -->
+  <rect class="lane" x="234" y="74" width="190" height="610"/>
+  <text class="lanelbl" x="250" y="98">INGESTION &amp; INTEGRATION</text>
+  <rect class="node" x="252" y="150" width="154" height="46"/><text class="nodet" x="266" y="170">ADF / Fabric</text><text class="nodet" x="266" y="186">Data Factory</text>
+  <rect class="node" x="252" y="212" width="154" height="46"/><text class="nodet" x="266" y="232">Dataflow Gen2</text><text class="nodet" x="266" y="248">(Power Query M)</text>
+  <rect class="node" x="252" y="274" width="154" height="46"/><text class="nodet" x="266" y="294">Databricks</text><text class="nodet" x="266" y="310">PySpark / Delta</text>
+
+  <!-- LAKEHOUSE -->
+  <rect class="lane" x="444" y="74" width="190" height="610"/>
+  <text class="lanelbl" x="460" y="98">ONELAKE &#8212; MEDALLION</text>
+  <rect class="node bronze" x="462" y="150" width="154" height="52"/><text class="nodet" x="476" y="172">Bronze</text><text class="nodet" x="476" y="190">Raw / append-only</text>
+  <rect class="node silver" x="462" y="220" width="154" height="52"/><text class="nodet" x="476" y="242">Silver</text><text class="nodet" x="476" y="260">Conformed / SCD2</text>
+  <rect class="node gold" x="462" y="290" width="154" height="52"/><text class="nodet" x="476" y="312">Gold</text><text class="nodet" x="476" y="330">Star schema</text>
+
+  <!-- SERVE -->
+  <rect class="lane" x="654" y="74" width="190" height="610"/>
+  <text class="lanelbl" x="670" y="98">SERVING &amp; SEMANTIC</text>
+  <rect class="node" x="672" y="150" width="154" height="46"/><text class="nodet" x="686" y="170">Fabric</text><text class="nodet" x="686" y="186">Warehouse</text>
+  <rect class="node" x="672" y="212" width="154" height="46"/><text class="nodet" x="686" y="232">Direct Lake</text><text class="nodet" x="686" y="248">Semantic Models</text>
+  <rect class="node" x="672" y="274" width="154" height="46"/><text class="nodet" x="686" y="294">Aggregations /</text><text class="nodet" x="686" y="310">Composite</text>
+
+  <!-- CONSUME -->
+  <rect class="lane" x="864" y="74" width="190" height="610"/>
+  <text class="lanelbl" x="880" y="98">CONSUMPTION</text>
+  <rect class="node" x="882" y="150" width="154" height="40"/><text class="nodet" x="896" y="175">Power BI Dashboards</text>
+  <rect class="node" x="882" y="200" width="154" height="40"/><text class="nodet" x="896" y="225">Paginated Reports</text>
+  <rect class="node" x="882" y="250" width="154" height="40"/><text class="nodet" x="896" y="275">Analyze in Excel</text>
+  <rect class="node" x="882" y="300" width="154" height="40"/><text class="nodet" x="896" y="325">Embedded / Apps</text>
+
+  <!-- Flow arrows between lanes -->
+  <path class="flow" d="M214,236 L252,210"/>
+  <path class="flow" d="M214,286 L252,235"/>
+  <path class="flow" d="M406,235 L462,230"/>
+  <path class="flow" d="M616,230 L672,232"/>
+  <path class="flow" d="M826,232 L882,200"/>
+  <path class="flow" d="M826,232 L882,250"/>
+
+  <!-- GOVERNANCE SPINE -->
+  <rect class="lane gov" x="24" y="560" width="1030" height="110"/>
+  <text class="lanelbl" x="40" y="584" fill="#1c6b43">GOVERNANCE SPINE (cross-cutting)</text>
+  <rect class="node gov" x="42" y="600" width="220" height="52"/><text class="govt" x="56" y="622">Microsoft Purview</text><text class="govt" x="56" y="640">lineage · catalog · labels · DLP</text>
+  <rect class="node gov" x="282" y="600" width="220" height="52"/><text class="govt" x="296" y="622">Security</text><text class="govt" x="296" y="640">RLS · OLS · RBAC</text>
+  <rect class="node gov" x="522" y="600" width="240" height="52"/><text class="govt" x="536" y="622">Deployment Pipelines</text><text class="govt" x="536" y="640">Dev · Test · Prod + Git</text>
+  <rect class="node gov" x="782" y="600" width="252" height="52"/><text class="govt" x="796" y="622">Data Quality &amp; Reconciliation</text><text class="govt" x="796" y="640">DQ rules · control totals</text>
+
+  <path class="govflow" d="M329,560 L329,356"/>
+  <path class="govflow" d="M539,560 L539,342"/>
+  <path class="govflow" d="M749,560 L749,320"/>
+  <path class="govflow" d="M959,560 L959,340"/>
+
+  <text x="28" y="730" fill="#7a8aa0" font-size="11">All data, entities, and metrics are synthetic and illustrative. Pattern reference only.</text>
+</svg>
